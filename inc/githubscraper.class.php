@@ -2,17 +2,22 @@
 
 class githubscraper
 {
+    // these are given upon creation of the class
     public $url;
-    public $naam;
+    public $displayName;
+
+    // these are filled after a call to 'Process()'
     public $avatarurl;
     public $activitysvg;
     public $errors = [];
-    public $displayName;
+    public $githubDisplayName;
 
-    function __construct($url, $naam)
+    // create this class by giving it a github page and a displayname
+    // example: $scraper = new githubscraper('https://github.com/petersnoek', 'Peter Snoek');
+    function __construct($url, $displayName)
     {
         $this->url = $url;
-        $this->naam = $naam;
+        $this->displayName = $displayName;
     }
 
     // returns:
@@ -52,7 +57,7 @@ div[@class="js-calendar-graph is-graph-loading graph-canvas calendar-graph heigh
 
         $resultnodes = $xpath->query('//div[@class="user-profile-mini-vcard d-table"]');
         foreach ($resultnodes as $node) {
-            $this->displayName = $this->DOMinnerHTML($node);
+            $this->githubDisplayName = $this->DOMinnerHTML($node);
         }
 
 

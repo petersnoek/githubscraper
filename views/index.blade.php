@@ -8,8 +8,8 @@
 
 @foreach ($scrapers as $scraper)
 <div style="display:flex; align-items: flex-start;" >
-    <span class="naam">{!! $scraper->naam !!}</span><br>
-    <span class="displayName">{!! $scraper->displayName !!}</span>
+    <span class="naam">{!! $scraper->displayName !!}</span><br>
+    <span class="displayName">{!! $scraper->githubDisplayName !!}</span>
     {{-- <img class="avatar" style="width:100px;" src="{!! $scraper->avatarurl !!}"/> --}}
     <div class="calendar-graph">{!! $scraper->activitysvg !!}</div>
 </div>
