@@ -20,6 +20,7 @@ class ComposerStaticInit26ca9463c016bdb1059e692ce9554500
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Psr\\Cache\\' => 10,
             'Philo\\Blade\\' => 12,
         ),
         'I' => 
@@ -30,6 +31,13 @@ class ComposerStaticInit26ca9463c016bdb1059e692ce9554500
             'Illuminate\\Events\\' => 18,
             'Illuminate\\Contracts\\' => 21,
             'Illuminate\\Container\\' => 21,
+        ),
+        'C' => 
+        array (
+            'Cache\\Taggable\\' => 15,
+            'Cache\\Hierarchy\\' => 16,
+            'Cache\\Adapter\\Memcached\\' => 24,
+            'Cache\\Adapter\\Common\\' => 21,
         ),
     );
 
@@ -45,6 +53,10 @@ class ComposerStaticInit26ca9463c016bdb1059e692ce9554500
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+        'Psr\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
         'Philo\\Blade\\' => 
         array (
@@ -73,6 +85,22 @@ class ComposerStaticInit26ca9463c016bdb1059e692ce9554500
         'Illuminate\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/container',
+        ),
+        'Cache\\Taggable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cache/taggable-cache',
+        ),
+        'Cache\\Hierarchy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cache/hierarchical-cache',
+        ),
+        'Cache\\Adapter\\Memcached\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cache/memcached-adapter',
+        ),
+        'Cache\\Adapter\\Common\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cache/adapter-common',
         ),
     );
 

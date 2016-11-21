@@ -1,40 +1,58 @@
 <?php
+//phpinfo();
 
-require 'vendor/autoload.php';
-use Philo\Blade\Blade;
-$views = __DIR__ . '/views';
-$cache = __DIR__ . '/cache';
-$blade = new Blade($views, $cache);
 
-// part 1: load an html page
-$url = "https://github.com/petersnoek";
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-$html = curl_exec($curl);
+// includes
+require 'inc/configureblade.php';
+require 'inc/githubscraper.class.php';
+//require 'vendor/cache/memcached-adapter/MemcachedCachePool.php';
 
-// part 2: search for specific piece of HTML
-require 'inc/dominnerhtml.php';
+// settings
+$urls = [
+    ['naam'=>'Peter', 'github'=>'https://github.com/petersnoek'],
+    ['naam'=>'Leon', 'github'=>'https://github.com/grondwortel'],
+    ['naam'=>'Tim', 'github'=>'https://github.com/thaillie'],
+];
 
-// load page into DOM object; if it fails then show the errors
-$DOM = new DOMDocument;
-libxml_use_internal_errors(true);       // libxml should be silent; we will show errors ourselves
-if (!$DOM->loadHTML($html)) {
-    var_export(libxml_get_errors());
-    libxml_clear_errors();
-    die();
+// create scrapers from urls
+$scrapers = [];
+foreach ($urls as $url)
+{
+    $scraper = new githubscraper($url['github'], $url['naam']);
+    $result = $scraper->Process();
+    $scrapers[] = $scraper;
 }
 
-// query DOM object
-$xpath = new DOMXPath($DOM);
+//date_default_timezone_set('Europe/Amsterdam');
+//$client = new \Memcached();
+//$client->addServer('localhost', 11211);
+//$pool = new Cache\Adapter\Memcached\MemcachedCachePool($client);
+//
+//// Get an item (existing or new)
+//$item = $pool->getItem('cache_key');
+//
+//// Set some values and store
+//$item->set('value');
+//$item->expiresAfter(60);
+//$pool->save($item);
+//
+//// Verify existence
+//$pool->hasItem('cache_key'); // True
+//$item->isHit(); // True
+//
+//// Delete
+////$pool->deleteItem('cache_key');
+////$pool->hasItem('cache_key'); // False
+//
+//
+//if ($pool->hasItem('cache_key'))
+//{
+//    echo 'Memcached installed';
+//}
+//else {
+//    echo 'Memcached not installed';
+//}
+//
+//die();
 
-$resultnodes = $xpath->query('//div[@class="js-contribution-graph"]/
-div[@class="mb-5 border border-gray-dark rounded-1 py-2"]/
-div[@class="js-calendar-graph is-graph-loading graph-canvas calendar-graph height-full"]');
-$part = '';
-foreach ($resultnodes as $node) {
-    $innerhtml = DOMinnerHTML($node);
-    $part = $innerhtml;
-}
-
-
-echo $blade->view()->make('index')->with('html', $part)->render();
+echo $blade->view()->make('index')->with('scrapers', $scrapers)->render();

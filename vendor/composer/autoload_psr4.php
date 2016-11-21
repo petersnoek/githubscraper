@@ -9,6 +9,7 @@ return array(
     'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
     'Symfony\\Component\\Debug\\' => array($vendorDir . '/symfony/debug'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
+    'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
     'Philo\\Blade\\' => array($vendorDir . '/philo/laravel-blade/src'),
     'Illuminate\\View\\' => array($vendorDir . '/illuminate/view'),
     'Illuminate\\Support\\' => array($vendorDir . '/illuminate/support'),
@@ -16,4 +17,8 @@ return array(
     'Illuminate\\Events\\' => array($vendorDir . '/illuminate/events'),
     'Illuminate\\Contracts\\' => array($vendorDir . '/illuminate/contracts'),
     'Illuminate\\Container\\' => array($vendorDir . '/illuminate/container'),
+    'Cache\\Taggable\\' => array($vendorDir . '/cache/taggable-cache'),
+    'Cache\\Hierarchy\\' => array($vendorDir . '/cache/hierarchical-cache'),
+    'Cache\\Adapter\\Memcached\\' => array($vendorDir . '/cache/memcached-adapter'),
+    'Cache\\Adapter\\Common\\' => array($vendorDir . '/cache/adapter-common'),
 );
