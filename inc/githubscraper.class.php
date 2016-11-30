@@ -32,6 +32,7 @@ class githubscraper
         // get new version of the page and store it in the cache
         $curl = curl_init($this->url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);  // no ssl check because this crashes on WAMP
         $this->html = curl_exec($curl);
 
         // search for specific piece of HTML; load page into DOM object; if it fails then show the errors
