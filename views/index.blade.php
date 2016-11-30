@@ -6,7 +6,7 @@
 </head>
 <body>
 
-@if (isset($_SESSION['debug']))
+@if (false && isset($_SESSION['debug']))
 <div class="debug" style="border: 1px solid red;">
     <ul>
     @foreach($_SESSION['debug'] as $dbg)
