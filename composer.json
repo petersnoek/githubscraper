@@ -1,6 +1,5 @@
 {
   "require": {
-    "philo/laravel-blade": "3.*",
-    "cache/memcached-adapter": "^0.3.2"
+    "philo/laravel-blade": "3.*"
   }
 }
